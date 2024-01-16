@@ -65,7 +65,6 @@ class LottoViewController: UIViewController {
     }
 
 }
-//www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=로또회차번호
 
 extension LottoViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

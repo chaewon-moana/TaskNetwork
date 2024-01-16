@@ -12,7 +12,7 @@ struct Beer: Codable {
     let name: String
     let description: String
     let image_url: String
-    //let food_pairing: [String]
+    let food_pairing: [String]
 }
 
 //struct Test: Codable {
