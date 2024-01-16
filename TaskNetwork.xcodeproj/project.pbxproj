@@ -19,6 +19,10 @@
 		DE99C26C2B5673AF00158E02 /* BeerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE99C26B2B5673AF00158E02 /* BeerViewController.swift */; };
 		DE99C2702B5673DA00158E02 /* BeerAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE99C26F2B5673DA00158E02 /* BeerAPIManager.swift */; };
 		DE99C2732B5679BF00158E02 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = DE99C2722B5679BF00158E02 /* Kingfisher */; };
+		DE99C2762B569A5200158E02 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE99C2752B569A5200158E02 /* UILabel+Extension.swift */; };
+		DE99C2782B569AB800158E02 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE99C2772B569AB800158E02 /* UIView+Extension.swift */; };
+		DE99C27B2B569F9500158E02 /* BeerListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE99C27A2B569F9500158E02 /* BeerListManager.swift */; };
+		DE99C27D2B569F9E00158E02 /* BeerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE99C27C2B569F9E00158E02 /* BeerListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +38,10 @@
 		DE99C2662B5665EB00158E02 /* LottoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoViewController.swift; sourceTree = "<group>"; };
 		DE99C26B2B5673AF00158E02 /* BeerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerViewController.swift; sourceTree = "<group>"; };
 		DE99C26F2B5673DA00158E02 /* BeerAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerAPIManager.swift; sourceTree = "<group>"; };
+		DE99C2752B569A5200158E02 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		DE99C2772B569AB800158E02 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		DE99C27A2B569F9500158E02 /* BeerListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerListManager.swift; sourceTree = "<group>"; };
+		DE99C27C2B569F9E00158E02 /* BeerListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +60,7 @@
 		DE99C2442B56647600158E02 = {
 			isa = PBXGroup;
 			children = (
+				DE99C2742B569A4300158E02 /* Extension */,
 				DE99C24F2B56647600158E02 /* TaskNetwork */,
 				DE99C24E2B56647600158E02 /* Products */,
 			);
@@ -68,6 +77,7 @@
 		DE99C24F2B56647600158E02 /* TaskNetwork */ = {
 			isa = PBXGroup;
 			children = (
+				DE99C2792B569F8500158E02 /* BeerList */,
 				DE99C26E2B5673CD00158E02 /* Beer */,
 				DE99C26D2B5673C000158E02 /* Lotto */,
 				DE99C2502B56647600158E02 /* AppDelegate.swift */,
@@ -97,6 +107,24 @@
 				DE99C26F2B5673DA00158E02 /* BeerAPIManager.swift */,
 			);
 			path = Beer;
+			sourceTree = "<group>";
+		};
+		DE99C2742B569A4300158E02 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				DE99C2752B569A5200158E02 /* UILabel+Extension.swift */,
+				DE99C2772B569AB800158E02 /* UIView+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		DE99C2792B569F8500158E02 /* BeerList */ = {
+			isa = PBXGroup;
+			children = (
+				DE99C27A2B569F9500158E02 /* BeerListManager.swift */,
+				DE99C27C2B569F9E00158E02 /* BeerListViewController.swift */,
+			);
+			path = BeerList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,12 +206,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE99C2762B569A5200158E02 /* UILabel+Extension.swift in Sources */,
 				DE99C2672B5665EB00158E02 /* LottoViewController.swift in Sources */,
 				DE99C2552B56647600158E02 /* ViewController.swift in Sources */,
+				DE99C2782B569AB800158E02 /* UIView+Extension.swift in Sources */,
 				DE99C26C2B5673AF00158E02 /* BeerViewController.swift in Sources */,
+				DE99C27B2B569F9500158E02 /* BeerListManager.swift in Sources */,
 				DE99C2702B5673DA00158E02 /* BeerAPIManager.swift in Sources */,
 				DE99C2512B56647600158E02 /* AppDelegate.swift in Sources */,
 				DE99C2532B56647600158E02 /* SceneDelegate.swift in Sources */,
+				DE99C27D2B569F9E00158E02 /* BeerListViewController.swift in Sources */,
 				DE99C2652B5665D100158E02 /* LottoAPIManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,7 +9,6 @@ import Alamofire
 
 struct Lotto: Codable {
     let drwNo: Int //회차
-    let drwNoDate: String //날짜
     let drwtNo1: Int
     let drwtNo2: Int
     let drwtNo3: Int

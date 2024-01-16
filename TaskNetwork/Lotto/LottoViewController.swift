@@ -23,6 +23,8 @@ class LottoViewController: UIViewController {
     let manager = LottoAPIManager()
     let lottoList: [Int] = Array(1...1102).reversed()
     
+    let list = Lotto(drwNo: 1102, drwtNo1: 0, drwtNo2: 0, drwtNo3: 0, drwtNo4: 0, drwtNo5: 0, drwtNo6: 0, bnusNo: 0)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
  
@@ -33,35 +35,45 @@ class LottoViewController: UIViewController {
         lottoPickerView.delegate = self
         lottoPickerView.dataSource = self
 
-        initPicker()
+        initPicker(round: 1102)
         setUI()
     }
 
     func setUI() {
         roundNumber.textAlignment = .center
+        roundNumber.text = "1102회차"
         
-        for view in numberView {
-            view.backgroundColor = .systemBlue
-            view.layer.cornerRadius = 25
+        for item in 0...numberView.count - 1 {
+            numberView[item].setLottoView()
+            numberLabel[item].setLottoNumber()
         }
         
         bonusView.layer.cornerRadius = 25
         bonusView.backgroundColor = .blue
         
-        roundNumber.text = "1102회차"
+        bonusNumber.textColor = .white
+        
         bonusLabel.text = "보너스 번호"
         bonusLabel.font = .boldSystemFont(ofSize: 24)
     
     }
     
-    func setPicker(value: Lotto) {
-        self.numberLabel[0].text = String(value.drwtNo1)
-        self.numberLabel[1].text = String(value.drwtNo2)
-        self.numberLabel[2].text = String(value.drwtNo3)
-        self.numberLabel[3].text = String(value.drwtNo4)
-        self.numberLabel[4].text = String(value.drwtNo5)
-        self.numberLabel[5].text = String(value.drwtNo6)
-        self.bonusNumber.text = String(value.bnusNo)
+    func decideNumberViewColor(number: Int) -> UIColor {
+        switch number {
+        case 1...10:
+            return .systemYellow
+        case 11...20:
+            return .systemBlue
+        case 21...30:
+            return .systemRed
+        case 31...40:
+            return .systemGray
+        case 41...45:
+            return .systemGreen
+        default:
+            print("로또배경색 에러발생")
+            return .systemCyan
+        }
     }
 
 }
@@ -80,29 +92,23 @@ extension LottoViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        manager.callRequest(round: lottoList[row]) { value in
-            self.numberLabel[0].text = String(value.drwtNo1)
-            self.numberLabel[1].text = String(value.drwtNo2)
-            self.numberLabel[2].text = String(value.drwtNo3)
-            self.numberLabel[3].text = String(value.drwtNo4)
-            self.numberLabel[4].text = String(value.drwtNo5)
-            self.numberLabel[5].text = String(value.drwtNo6)
-            self.bonusNumber.text = String(value.bnusNo)
-            
-        }
+        initPicker(round: lottoList[row])
         roundNumber.text = "\(lottoList[row])회차"
     }
     
-    func initPicker() {
-        manager.callRequest(round: 1102) { value in
-            self.numberLabel[0].text = String(value.drwtNo1)
-            self.numberLabel[1].text = String(value.drwtNo2)
-            self.numberLabel[2].text = String(value.drwtNo3)
-            self.numberLabel[3].text = String(value.drwtNo4)
-            self.numberLabel[4].text = String(value.drwtNo5)
-            self.numberLabel[5].text = String(value.drwtNo6)
-            self.bonusNumber.text = String(value.bnusNo)
+    func initPicker(round: Int) {
+        manager.callRequest(round: round) { value in
+            let data: [Int] = [value.drwtNo1, value.drwtNo2, value.drwtNo3, value.drwtNo4, value.drwtNo5, value.drwtNo6]
+            self.setNumberColor(numbers: data, bonus: value.bnusNo)
         }
     }
     
+    func setNumberColor(numbers: [Int], bonus: Int) {
+        for idx in 0...numbers.count - 1 {
+            self.numberLabel[idx].text = String(numbers[idx])
+            self.numberView[idx].backgroundColor = self.decideNumberViewColor(number: numbers[idx])
+        }
+        self.bonusView.backgroundColor = self.decideNumberViewColor(number: bonus)
+        self.bonusNumber.text = String(bonus)
+    }
 }
