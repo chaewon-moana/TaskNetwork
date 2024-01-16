@@ -15,13 +15,6 @@ struct Beer: Codable {
     let food_pairing: [String]
 }
 
-//struct Test: Codable {
-//    let data: Beer
-//}
-//struct Food {
-//    let menu: [String]
-//}
-
 struct BeerAPIManager {
     let url = "https://api.punkapi.com/v2/beers/random"
     

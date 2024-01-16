@@ -8,7 +8,7 @@
 import Alamofire
 
 struct Lotto: Codable {
-    let drwNo: Int //회차
+    let drwNo: Int 
     let drwtNo1: Int
     let drwtNo2: Int
     let drwtNo3: Int
@@ -17,7 +17,6 @@ struct Lotto: Codable {
     let drwtNo6: Int
     let bnusNo: Int
 }
-
 
 struct LottoAPIManager {
     
