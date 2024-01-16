@@ -25,7 +25,7 @@ class LottoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+ 
         roundTextField.inputView = lottoPickerView
         roundTextField.tintColor = .clear
         roundTextField.becomeFirstResponder()
@@ -33,14 +33,10 @@ class LottoViewController: UIViewController {
         lottoPickerView.delegate = self
         lottoPickerView.dataSource = self
 
+        initPicker()
         setUI()
     }
-    
-    func setPicker() {
-        
-        
-    }
-    
+
     func setUI() {
         roundNumber.textAlignment = .center
         
@@ -52,12 +48,21 @@ class LottoViewController: UIViewController {
         bonusView.layer.cornerRadius = 25
         bonusView.backgroundColor = .blue
         
+        roundNumber.text = "1102회차"
         bonusLabel.text = "보너스 번호"
         bonusLabel.font = .boldSystemFont(ofSize: 24)
-        
-        
+    
     }
     
+    func setPicker(value: Lotto) {
+        self.numberLabel[0].text = String(value.drwtNo1)
+        self.numberLabel[1].text = String(value.drwtNo2)
+        self.numberLabel[2].text = String(value.drwtNo3)
+        self.numberLabel[3].text = String(value.drwtNo4)
+        self.numberLabel[4].text = String(value.drwtNo5)
+        self.numberLabel[5].text = String(value.drwtNo6)
+        self.bonusNumber.text = String(value.bnusNo)
+    }
 
 }
 //www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=로또회차번호
@@ -84,9 +89,21 @@ extension LottoViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             self.numberLabel[4].text = String(value.drwtNo5)
             self.numberLabel[5].text = String(value.drwtNo6)
             self.bonusNumber.text = String(value.bnusNo)
-
+            
         }
         roundNumber.text = "\(lottoList[row])회차"
+    }
+    
+    func initPicker() {
+        manager.callRequest(round: 1102) { value in
+            self.numberLabel[0].text = String(value.drwtNo1)
+            self.numberLabel[1].text = String(value.drwtNo2)
+            self.numberLabel[2].text = String(value.drwtNo3)
+            self.numberLabel[3].text = String(value.drwtNo4)
+            self.numberLabel[4].text = String(value.drwtNo5)
+            self.numberLabel[5].text = String(value.drwtNo6)
+            self.bonusNumber.text = String(value.bnusNo)
+        }
     }
     
 }
